@@ -8,4 +8,5 @@ definitionsFactory.generate({
     typePaths: ["./schema.graphql"],
     path: resolve(process.cwd(), "src/typings/graphql.ts"),
     outputAs: "interface",
+    skipResolverArgs: true,
 });

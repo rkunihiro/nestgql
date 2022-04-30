@@ -1,6 +1,29 @@
+type Post {
+    id: ID!
+    autherId: ID!
+    title: String!
+
+    "related user"
+    auther: User
+}
+
+type User {
+    id: ID!
+    name: String!
+
+    "user post"
+    posts: [Post!]
+}
+
 type Query {
     "Show greeting message"
     hello: String
+
+    "find user by id"
+    user(id: ID!): User
+
+    post(id: ID!): Post
+    posts(limit: Int, offset: Int): [Post!]!
 }
 
 schema {
