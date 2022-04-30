@@ -2,3 +2,7 @@ type Query {
     "Show greeting message"
     hello: String
 }
+
+schema {
+    query: Query
+}

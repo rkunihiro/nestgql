@@ -1,5 +1,3 @@
-import { resolve } from "path";
-
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
@@ -14,7 +12,7 @@ import { QueryResolver } from "../resolver/QueryResolver";
             driver: ApolloDriver,
             typePaths: [
                 //
-                resolve(__dirname, "../../schema.graphql"),
+                "./**/*.graphql",
             ],
             path: "/graphql",
             playground: false,
@@ -22,9 +20,13 @@ import { QueryResolver } from "../resolver/QueryResolver";
                 //
                 ApolloServerPluginLandingPageGraphQLPlayground(),
             ],
+            debug: true,
         }),
         QueryResolver,
     ],
-    controllers: [HelloController],
+    controllers: [
+        //
+        HelloController,
+    ],
 })
 export class AppModule {}
