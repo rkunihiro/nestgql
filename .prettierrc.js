@@ -1,7 +1,10 @@
+/**
+ * @type {import("prettier").Config}
+ */
 module.exports = {
     printWidth: 120,
-    // tabWidth: 4,
-    // useTabs: false,
+    tabWidth: 4,
+    useTabs: false,
     semi: true,
     singleQuote: false,
     quoteProps: "consistent",
@@ -10,4 +13,14 @@ module.exports = {
     bracketSpacing: true,
     bracketSameLine: false,
     arrowParens: "always",
+
+    overrides: [
+        {
+            files: ["*.yml", "*.yaml"],
+            options: {
+                singleQuote: true,
+                tabWidth: 2,
+            },
+        },
+    ],
 };
