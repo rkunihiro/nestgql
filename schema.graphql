@@ -1,7 +1,10 @@
+scalar Date
+
 type Post {
     id: ID!
     autherId: ID!
     title: String!
+    posted: Date
 
     "related user"
     auther: User

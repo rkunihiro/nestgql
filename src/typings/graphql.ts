@@ -11,6 +11,7 @@ export interface Post {
     id: string;
     autherId: string;
     title: string;
+    posted?: Nullable<Date>;
     auther?: Nullable<User>;
 }
 

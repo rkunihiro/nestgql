@@ -12,10 +12,12 @@ export class PostService {
     ) {}
 
     async findById(id: string): Promise<Post | undefined> {
+        console.log("PostService#findById", id);
         return this.repo.findOne(id);
     }
 
     async findAll({ limit = 10, offset = 0 }): Promise<Post[]> {
+        console.log("PostService#findAll", { limit, offset });
         return this.repo.find({
             order: {
                 id: "DESC",
@@ -26,6 +28,7 @@ export class PostService {
     }
 
     async findByAutherId(autherId: string): Promise<Post[]> {
+        console.log("PostService#findByAutherId", autherId);
         return this.repo.find({
             where: {
                 autherId,

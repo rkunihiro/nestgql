@@ -10,4 +10,7 @@ export class Post {
 
     @Column({ name: "title", type: "varchar" })
     public title = "";
+
+    @Column({ name: "posted", type: "datetime" })
+    public posted?: Date;
 }

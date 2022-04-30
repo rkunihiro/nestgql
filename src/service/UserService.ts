@@ -12,6 +12,7 @@ export class UserService {
     ) {}
 
     async findById(id: string): Promise<User | undefined> {
+        console.log("UserService#findById", id);
         return this.repo.findOne(id);
     }
 }

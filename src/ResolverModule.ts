@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 
 import { DatabaseModule } from "./DatabaseModule";
+import { DateScalar } from "./resolver/DateScalar";
 import { PostResolver } from "./resolver/PostResolver";
 import { QueryResolver } from "./resolver/QueryResolver";
 import { UserResolver } from "./resolver/UserResolver";
@@ -14,6 +15,7 @@ import { UserService } from "./service/UserService";
         PostService,
         UserService,
 
+        DateScalar,
         PostResolver,
         UserResolver,
         QueryResolver,
