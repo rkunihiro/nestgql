@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  nodejs:
+    container_name: nestsb-container-nodejs
+    image: gcr.io/distroless/nodejs:16
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    volumes:
+      - ./dist:/app/dist:ro
+      - ./schema.graphql:/app/schema.graphql:ro
+    working_dir: /app
+    command: ['./dist/app.js']
+
+  db:
+    container_name: nestsb-container-db
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbname
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      TZ: 'Asia/Tokyo'
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/db/conf:/etc/mysql/conf.d:ro
+      - ./docker/db/init:/docker-entrypoint-initdb.d:ro
+      - ./docker/db/logs:/var/log/mysql:rw
+      # - ./docker/db/data:/var/lib/mysql:rw
+    platform: linux/amd64
+
+networks:
+  default:
+    name: nestsb-network-default
